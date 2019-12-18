@@ -1,11 +1,12 @@
 import React from "react";
 import CharacterCard from "./components/CharacterCard";
 import Wrapper from "./components/Wrapper";
-import friends from "./characters.json";
+import characters from "./characters.json";
 import "./App.css";
 
 class App extends React.Component {
   state = {
+    characters,
     gameStatus: "Playing",
     charactersChosen: [],
     score: 0
@@ -33,7 +34,7 @@ class App extends React.Component {
       <div class="jumbotron mt-2">
       <h1 className="title">Star Wars Clicky Game!</h1>
       </div>
-      {this.state.friends.map(item => 
+      {this.state.characters.map(item => 
       <CharacterCard 
       name={item.name}
       image={item.image}
