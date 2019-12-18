@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import CharacterCard from "./components/CharacterCard";
+import Wrapper from "./components/Wrapper";
+import friends from "./characters.json";
+import "./App.css";
 
-function App() {
+class App extends React.Component {
+  state = {
+    friends: friends
+  }
+
+ removeFriend = id => {
+  this.setState({ friends: this.state.friends.filter(item => item.id !== id)})
+
+ }
+
+  render() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Wrapper>
+      <h1 className="title">Friends List</h1>
+      {this.state.friends.map(item => 
+      <CharacterCard 
+      name={item.name}
+      image={item.image}
+      id={item.id}
+     // removeFriend={this.removeFriend}
+      /> )}
+
+
+
+
+    </Wrapper>
+  ); 
+}
 }
 
 export default App;

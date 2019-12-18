@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "name": "Rey",
+        "image": "./assets/images/rey.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Amilyn Holdo",
+        "image": "./assets/images/amilynholdo.jpg"
+    },
+    {
+        "id": 3,
+        "name": "BB-8",
+        "image": "./assets/images/bb8.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Chewie",
+        "image": "./assets/images/chewie.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Finn",
+        "image": "./assets/images/finn.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Han Solo",
+        "image": "./assets/images/hansolo.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Kylo Ren",
+        "image": "./assets/images/kyloren.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Leia Organa",
+        "image": "./assets/images/leia.jpg"
+    },
+    {
+        "id": 9,
+        "name": "Luke Skywalker",
+        "image": "./assets/images/luke.jpg"
+    },
+    {
+        "id": 10,
+        "name": "Poe Dameron",
+        "image": "./assets/images/poedameron.jpg"
+    },
+    {
+        "id": 11,
+        "name": "Rose Tico",
+        "image": "./assets/images/rosetico.jpg"
+    },
+    {
+        "id": 12,
+        "name": "Snoke",
+        "image": "./assets/images/snoke.jpg"
+    }
+]
