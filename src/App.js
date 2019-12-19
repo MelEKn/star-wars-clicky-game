@@ -33,6 +33,10 @@ class App extends React.Component {
     }
     else {
       console.log("You lose!")
+      this.setState({
+        charactersChosen: [],
+        score: 0
+      })
     }
 
     console.log("this.state is ");
