@@ -1,6 +1,9 @@
 .wrapper {
     padding-top: 50px;
-    background: #ECEFF1;
+    /* background: #ECEFF1; */
+    /* background-image: url(/assets/images/spacebackground.jpg);
+    background-size: fill; */
+ background-color: lightslategray;
     height: 100%;
     display: flex;
     flex-flow: row wrap;

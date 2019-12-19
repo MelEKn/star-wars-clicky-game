@@ -34,13 +34,8 @@ class App extends React.Component {
 
 
   chooseCharacter = id => {
-
-
     console.log("this.state.characters is ");
     console.log(this.state.characters);
-
-
-
 
     if (!this.state.score) {
       this.setState({
@@ -54,10 +49,7 @@ class App extends React.Component {
         charactersChosen: [],
         score: 0
       })
-
     }
-
-
 
     if (!this.state.charactersChosen.includes(id)) {
 
@@ -108,8 +100,8 @@ class App extends React.Component {
       <Wrapper>
 
 
-        <div className="jumbotron">
-          <h1 className="title">Star Wars Clicky Game!</h1>
+        <div className="title">
+          <h1>Star Wars Clicky Game!</h1>
         </div>
 
         <div className="container">
