@@ -15,7 +15,7 @@ class App extends React.Component {
 
   handleInputChange = event => {
     event.preventDefault();
-    let {name, value} = event.target;
+    let { name, value } = event.target;
     this.setState({
       [name]: value
     });
@@ -23,13 +23,13 @@ class App extends React.Component {
 
   chooseCharacter = id => {
 
-    if(!this.state.score){
+    if (!this.state.score) {
       this.setState({
         status: ""
       })
     }
-    
-    else if(this.state.score===12){
+
+    else if (this.state.score === 12) {
       console.log("The else if for this.state.score===12 WAS triggered, it just didn't reset the state for some reason???");
       this.setState({
         status: "",
@@ -48,7 +48,7 @@ class App extends React.Component {
     console.log("does this.state.status === 'You won! Congratulations!'?");
     console.log(this.state.status === "You won! Congratulations!");
 
-    if(this.state.status === "You won! Congratulations!"){
+    if (this.state.status === "You won! Congratulations!") {
       console.log("THIS DID RUN!!!!!");
       this.setState({
         status: "",
@@ -61,7 +61,7 @@ class App extends React.Component {
     console.log(this.state.status);
 
 
-   
+
 
     console.log("this.state.charactersChosen.includes(id) is ");
     console.log(this.state.charactersChosen.includes(id));
@@ -88,14 +88,14 @@ class App extends React.Component {
     }
     else {
       let high;
-      if(this.state.score>this.state.highScore){
-      high = this.state.score;
+      if (this.state.score > this.state.highScore) {
+        high = this.state.score;
       }
-      else{
-        high=this.state.highScore;
+      else {
+        high = this.state.highScore;
       }
       console.log("You lose!")
-     
+
       this.setState({
         charactersChosen: [],
         highScore: high,
@@ -139,42 +139,50 @@ class App extends React.Component {
       <Wrapper>
         {console.log("this.state is")}
         {console.log(this.state)}
-        <div className="container">
-       
+
+
         <div className="jumbotron">
           <h1 className="title">Star Wars Clicky Game!</h1>
         </div>
-        <div className="row stats">
-          <div className="col-8">Click each character once. If you click all 12 only once, you win!</div> 
+
+        <div className="container">
+          <div className="row stats">
+            <div className="col-8">
+            </div>
+            <div className="col-2"> Score: {this.state.score}</div>
+            <div className="col-2">
+              High Score: {this.state.highScore}
+            </div>
           </div>
           <div className="row">
-          <div className="col-8"> </div>
-           <div className="col-2"> Score: {this.state.score}</div>
-           <div className="col-2">
-           High Score: {this.state.highScore}
-           </div>
+            <div className="col-8">Click each character once. If you click all 12 only once, you win!</div>
+            <div className="col-4"></div>
           </div>
-          <div className="winLose">
+          <h5 className="text-center mt-3">
             {this.state.status}
-            
+
+          </h5>
+
+          <div className="row">
+            {this.state.characters.map(item =>
+              <CharacterCard
+                name={item.name}
+                image={item.image}
+                id={item.id}
+                onChange={this.handleInputChange}
+                chooseCharacter={this.chooseCharacter}
+
+              // removeFriend={this.removeFriend}
+              />)}
+
           </div>
-        <div className="row">
-        {this.state.characters.map(item =>
-          <CharacterCard
-            name={item.name}
-            image={item.image}
-            id={item.id}
-            onChange={this.handleInputChange}
-            chooseCharacter={this.chooseCharacter}
-
-          // removeFriend={this.removeFriend}
-          />)}
-          </div>
-
-          </div>
+        </div>
+          
+      
 
 
-      </Wrapper>
+
+      </Wrapper >
     );
   }
 }
