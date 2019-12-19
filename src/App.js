@@ -21,7 +21,29 @@ class App extends React.Component {
     });
   };
 
+
+  //Shuffling algorithm taken from https://javascript.info/task/shuffle
+  shuffleCharacters = array => {
+    for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+
   chooseCharacter = id => {
+
+
+    console.log("this.state.characters is ");
+    console.log(this.state.characters);
+
+    let shuffle = this.state.characters;
+
+    shuffle = this.shuffleCharacters(shuffle);
+
+    console.log("shuffle is ");
+    console.log(shuffle);
 
     if (!this.state.score) {
       this.setState({
@@ -30,54 +52,27 @@ class App extends React.Component {
     }
 
     else if (this.state.score === 12) {
-      console.log("The else if for this.state.score===12 WAS triggered, it just didn't reset the state for some reason???");
-      this.setState({
-        status: "",
-        score: 0
-      })
-
-    }
-
-    console.log("Score is: ");
-    console.log(this.state.score);
-    console.log("-------");
-
-    console.log("this.state.status is ");
-    console.log(this.state.status);
-
-    console.log("does this.state.status === 'You won! Congratulations!'?");
-    console.log(this.state.status === "You won! Congratulations!");
-
-    if (this.state.status === "You won! Congratulations!") {
-      console.log("THIS DID RUN!!!!!");
       this.setState({
         status: "",
         charactersChosen: [],
         score: 0
       })
+
     }
 
-    console.log("this.state.status is ");
-    console.log(this.state.status);
 
-
-
-
-    console.log("this.state.charactersChosen.includes(id) is ");
-    console.log(this.state.charactersChosen.includes(id));
-
-    console.log("this.state.charactersChosen.includes(id) is");
-    console.log(this.state.charactersChosen.includes(id));
 
     if (!this.state.charactersChosen.includes(id)) {
+
       if (this.state.score >= 11) {
         this.setState({
           status: "You won! Congratulations!",
           highScore: 12,
           score: 0,
-          charactersChosen: []
+          charactersChosen: [],
         })
         console.log("You won!");
+
       }
       else {
         this.setState({
@@ -104,34 +99,7 @@ class App extends React.Component {
       })
     }
 
-    console.log("this.state is ");
-    console.log(this.state);
 
-    //  let chars = this.state.charactersChosen;
-
-    //  console.log("typeof this.state.charactersChosen");
-    //  console.log(typeof this.state.charactersChosen);
-
-
-    //  console.log(chars);
-
-    //  console.log("next is typeof chars");
-    //  console.log(typeof chars);
-
-    // if(chars.includes(id)){
-    //   this.setState({
-    //     charactersChosen: [],
-    //     score: 0
-    //   })
-    //   console.log("You lost!");
-    // } 
-    // else{
-    //  chars.push(id);
-    //   this.setState({
-    //     score: this.state.score + 1,
-    //     charactersChosen: this.state.charactersChosen.push(id),
-    //   })
-    // }
   }
 
   render() {
@@ -173,12 +141,13 @@ class App extends React.Component {
                 chooseCharacter={this.chooseCharacter}
 
               // removeFriend={this.removeFriend}
-              />)}
+              />
+            )}}
 
           </div>
         </div>
-          
-      
+
+
 
 
 
