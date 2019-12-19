@@ -70,9 +70,12 @@ class App extends React.Component {
       <Wrapper>
         {console.log("this.state is")}
         {console.log(this.state)}
+        <div className="row">
         <div className="jumbotron mt-2">
           <h1 className="title">Star Wars Clicky Game!</h1>
         </div>
+        </div>
+        <div className="row">
         {this.state.characters.map(item =>
           <CharacterCard
             name={item.name}
@@ -82,6 +85,7 @@ class App extends React.Component {
 
           // removeFriend={this.removeFriend}
           />)}
+          </div>
 
 
 
