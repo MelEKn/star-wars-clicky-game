@@ -16,6 +16,11 @@
   .jumbotron{
     width: 100%;
   }
+
+  .winLose{
+    font-size: 24px;
+    text-align: center
+  }
   
   .card > .img-container {
     height: 60%;

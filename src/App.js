@@ -8,20 +8,75 @@ class App extends React.Component {
   state = {
     characters,
     charactersChosen: [],
-    score: 0
+    score: 0,
+    highScore: 0,
+    status: ""
+  };
+
+  handleInputChange = event => {
+    event.preventDefault();
+    let {name, value} = event.target;
+    this.setState({
+      [name]: value
+    });
   };
 
   chooseCharacter = id => {
 
+    if(!this.state.score){
+      this.setState({
+        status: ""
+      })
+    }
+    
+    else if(this.state.score===12){
+      console.log("The else if for this.state.score===12 WAS triggered, it just didn't reset the state for some reason???");
+      this.setState({
+        status: "",
+        score: 0
+      })
 
-    console.log("this.state.charactersChosen is");
-    console.log(this.state.charactersChosen);
+    }
+
+    console.log("Score is: ");
+    console.log(this.state.score);
+    console.log("-------");
+
+    console.log("this.state.status is ");
+    console.log(this.state.status);
+
+    console.log("does this.state.status === 'You won! Congratulations!'?");
+    console.log(this.state.status === "You won! Congratulations!");
+
+    if(this.state.status === "You won! Congratulations!"){
+      console.log("THIS DID RUN!!!!!");
+      this.setState({
+        status: "",
+        charactersChosen: [],
+        score: 0
+      })
+    }
+
+    console.log("this.state.status is ");
+    console.log(this.state.status);
+
+
+   
 
     console.log("this.state.charactersChosen.includes(id) is ");
     console.log(this.state.charactersChosen.includes(id));
 
+    console.log("this.state.charactersChosen.includes(id) is");
+    console.log(this.state.charactersChosen.includes(id));
+
     if (!this.state.charactersChosen.includes(id)) {
       if (this.state.score >= 11) {
+        this.setState({
+          status: "You won! Congratulations!",
+          highScore: 12,
+          score: 0,
+          charactersChosen: []
+        })
         console.log("You won!");
       }
       else {
@@ -32,10 +87,20 @@ class App extends React.Component {
       }
     }
     else {
+      let high;
+      if(this.state.score>this.state.highScore){
+      high = this.state.score;
+      }
+      else{
+        high=this.state.highScore;
+      }
       console.log("You lose!")
+     
       this.setState({
         charactersChosen: [],
-        score: 0
+        highScore: high,
+        score: 0,
+        status: "You lost! Whoops. Refresh or click any picture to play again!"
       })
     }
 
@@ -74,7 +139,7 @@ class App extends React.Component {
       <Wrapper>
         {console.log("this.state is")}
         {console.log(this.state)}
-        <div class="container">
+        <div className="container">
        
         <div className="jumbotron">
           <h1 className="title">Star Wars Clicky Game!</h1>
@@ -83,7 +148,15 @@ class App extends React.Component {
           <div className="col-8">Click each character once. If you click all 12 only once, you win!</div> 
           </div>
           <div className="row">
-          <div className="col-8"> </div> <div className="col-4"> Score: {this.state.score}</div>
+          <div className="col-8"> </div>
+           <div className="col-2"> Score: {this.state.score}</div>
+           <div className="col-2">
+           High Score: {this.state.highScore}
+           </div>
+          </div>
+          <div className="winLose">
+            {this.state.status}
+            
           </div>
         <div className="row">
         {this.state.characters.map(item =>
@@ -91,6 +164,7 @@ class App extends React.Component {
             name={item.name}
             image={item.image}
             id={item.id}
+            onChange={this.handleInputChange}
             chooseCharacter={this.chooseCharacter}
 
           // removeFriend={this.removeFriend}
