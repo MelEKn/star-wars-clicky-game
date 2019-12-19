@@ -8,6 +8,10 @@
     box-shadow: 0 3px 6px #999, 0 3px 6px #999;
     text-align: left;
   }
+
+  .jumbotron{
+    width: 100%;
+  }
   
   .card > .img-container {
     height: 60%;

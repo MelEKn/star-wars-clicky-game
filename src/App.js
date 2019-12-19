@@ -70,11 +70,17 @@ class App extends React.Component {
       <Wrapper>
         {console.log("this.state is")}
         {console.log(this.state)}
-        <div className="row">
-        <div className="jumbotron mt-2">
+        <div class="container">
+       
+        <div className="jumbotron">
           <h1 className="title">Star Wars Clicky Game!</h1>
         </div>
-        </div>
+        <div className="row stats">
+          <div className="col-8">Click each character once. If you click all 12 only once, you win!</div> 
+          </div>
+          <div className="row">
+          <div className="col-8"> </div> <div className="col-4"> Score: {this.state.score}</div>
+          </div>
         <div className="row">
         {this.state.characters.map(item =>
           <CharacterCard
@@ -87,7 +93,7 @@ class App extends React.Component {
           />)}
           </div>
 
-
+          </div>
 
 
       </Wrapper>
