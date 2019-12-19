@@ -10,7 +10,8 @@ class App extends React.Component {
     charactersChosen: [],
     score: 0,
     highScore: 0,
-    status: ""
+    wins: 0,
+    status: "",
   };
 
   handleInputChange = event => {
@@ -38,12 +39,8 @@ class App extends React.Component {
     console.log("this.state.characters is ");
     console.log(this.state.characters);
 
-    let shuffle = this.state.characters;
 
-    shuffle = this.shuffleCharacters(shuffle);
 
-    console.log("shuffle is ");
-    console.log(shuffle);
 
     if (!this.state.score) {
       this.setState({
@@ -66,15 +63,19 @@ class App extends React.Component {
 
       if (this.state.score >= 11) {
         this.setState({
-          status: "You won! Congratulations!",
+          status: "You won! Congratulations!\n Refresh or click any picture to play again!",
           highScore: 12,
           score: 0,
           charactersChosen: [],
+          wins: this.state.wins + 1
         })
         console.log("You won!");
 
       }
       else {
+
+        let shuffle = this.state.characters;
+        shuffle = this.shuffleCharacters(shuffle);
         this.setState({
           charactersChosen: [...this.state.charactersChosen, id],
           score: this.state.score + 1
@@ -105,8 +106,6 @@ class App extends React.Component {
   render() {
     return (
       <Wrapper>
-        {console.log("this.state is")}
-        {console.log(this.state)}
 
 
         <div className="jumbotron">
@@ -115,11 +114,14 @@ class App extends React.Component {
 
         <div className="container">
           <div className="row stats">
-            <div className="col-8">
+            <div className="col-6">
             </div>
             <div className="col-2"> Score: {this.state.score}</div>
             <div className="col-2">
               High Score: {this.state.highScore}
+            </div>
+            <div className="col-2">
+              Total Wins: {this.state.wins}
             </div>
           </div>
           <div className="row">
@@ -140,9 +142,8 @@ class App extends React.Component {
                 onChange={this.handleInputChange}
                 chooseCharacter={this.chooseCharacter}
 
-              // removeFriend={this.removeFriend}
               />
-            )}}
+            )}
 
           </div>
         </div>
